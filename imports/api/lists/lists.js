@@ -4,6 +4,8 @@ import { Factory } from 'meteor/factory';
 import i18n from 'meteor/universe:i18n';
 import { Todos } from '../todos/todos.js';
 
+// subclass Mongo.Collection and write our own insert() method
+// set name of lists as List A, List B, List C etc...
 class ListsCollection extends Mongo.Collection {
   insert(list, callback, locale = 'en') {
     const ourList = list;
