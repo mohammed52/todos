@@ -6,6 +6,8 @@ import { Todos } from '../todos/todos.js';
 
 // subclass Mongo.Collection and write our own insert() method
 // set name of lists as List A, List B, List C etc...
+
+// override insert and remove operations, set approp list name
 class ListsCollection extends Mongo.Collection {
   insert(list, callback, locale = 'en') {
     const ourList = list;
@@ -59,8 +61,10 @@ Lists.publicFields = {
   userId: 1,
 };
 
+// factory helps us encode test data,
 Factory.define('list', Lists, {});
 
+// additional helper methods with our collections
 Lists.helpers({
   // A list is considered to be private if it has a userId set
   isPrivate() {
@@ -77,6 +81,7 @@ Lists.helpers({
 
     return this.userId === userId;
   },
+  // can also use helper methods to establish associations
   todos() {
     return Todos.find({ listId: this._id }, { sort: { createdAt: -1 } });
   },

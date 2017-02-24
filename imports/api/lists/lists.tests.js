@@ -16,9 +16,11 @@ import '../../../i18n/en.i18n.json';
 if (Meteor.isServer) {
   // eslint-disable-next-line import/no-unresolved
   import './server/publications.js';
-
+// 'describe' appears to be 'heading' in the test window
   describe('lists', () => {
     describe('mutators', () => {
+     
+      // it appears to be individual tests
       it('builds correctly from factory', () => {
         const list = Factory.create('list');
         assert.typeOf(list, 'object');
@@ -36,9 +38,11 @@ if (Meteor.isServer) {
           Factory.create('todo', { listId: list._id });
         });
       };
-
+// before vs beforeEach , before runs before all tests in a describe,
+// beforeEach runs bofore ech test
       before(() => {
         Lists.remove({});
+        // underscore library, invokes the given method n times
         _.times(3, () => createList());
         _.times(2, () => createList({ userId }));
         _.times(2, () => createList({ userId: Random.id() }));
@@ -47,6 +51,7 @@ if (Meteor.isServer) {
 
       describe('lists.public', () => {
         it('sends all public lists', (done) => {
+          // publicationn collector - test individual publication’s output
           const collector = new PublicationCollector();
           collector.collect('lists.public', (collections) => {
             chai.assert.equal(collections.Lists.length, 3);
@@ -59,6 +64,7 @@ if (Meteor.isServer) {
         it('sends all owned lists', (done) => {
           const collector = new PublicationCollector({ userId });
           collector.collect('lists.private', (collections) => {
+            // similar to npm assertion
             chai.assert.equal(collections.Lists.length, 2);
             done();
           });

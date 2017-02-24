@@ -6,6 +6,8 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Todos } from '../todos.js';
 import { Lists } from '../../lists/lists.js';
 
+// write publications that are properly reactive to changes
+// across collections
 Meteor.publishComposite('todos.inList', function todosInList(params) {
   new SimpleSchema({
     listId: { type: String },

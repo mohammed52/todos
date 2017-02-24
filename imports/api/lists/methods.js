@@ -6,6 +6,7 @@ import { _ } from 'meteor/underscore';
 
 import { Lists } from './lists.js';
 
+//
 const LIST_ID_ONLY = new SimpleSchema({
   listId: { type: String },
 }).validator();
@@ -115,6 +116,7 @@ export const remove = new ValidatedMethod({
 });
 
 // Get list of all method names on Lists
+// underscore.js pluck , extracting a list of property values
 const LISTS_METHODS = _.pluck([
   insert,
   makePublic,
@@ -125,6 +127,7 @@ const LISTS_METHODS = _.pluck([
 
 if (Meteor.isServer) {
   // Only allow 5 list operations per connection per second
+  // Customize rate limiting for methods and subscriptions
   DDPRateLimiter.addRule({
     name(name) {
       return _.contains(LISTS_METHODS, name);
