@@ -49,7 +49,7 @@ export default class ListPage extends BaseComponent {
     return (
       <div className="page lists-show">
         <ListHeader list={list} />
-        <div className="content-scrollable list-items">
+        <div className="content-scrollable list-items list-box testbg-1">
           {loading
             ? <Message title={i18n.__('pages.listPage.loading')} />
             : Todos}

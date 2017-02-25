@@ -1,0 +1,31 @@
+.ranking-input-box{
+    margin-top: 70px
+}
+
+.testbg-1 {
+  /*blue*/
+  border: 1px solid #0000FE; 
+}
+
+.list-box{
+  color: red;
+  margin-top: 30px
+}
+
+.testbg-2 {
+  /*red*/
+  border: 1px solid #FE0000; 
+}
+
+.testbg-3 {
+  /*green*/
+  border: 1px solid #01DF00; 
+}
+
+.form-todo{
+  /*height: 50px;*/
+}
+
+.rank-number{
+  /*line-height: 28px;*/
+}

@@ -6,6 +6,7 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import incompleteCountDenormalizer from './incompleteCountDenormalizer.js';
 import { Lists } from '../lists/lists.js';
 
+// implement associations, update lists when a todo is updated
 class TodosCollection extends Mongo.Collection {
   insert(doc, callback) {
     const ourDoc = doc;
