@@ -54,6 +54,10 @@ Todos.schema = new SimpleSchema({
     type: Boolean,
     defaultValue: false,
   },
+  rank: {
+    type: Number,
+    defaultValue: 0,
+  },
 });
 
 Todos.attachSchema(Todos.schema);

@@ -5,6 +5,7 @@ import { Todos } from './todos.js';
 import { Lists } from '../lists/lists.js';
 
 // denormaliser - duplicate documents as per requirement
+// in this case, lists updated after a todo updation
 const incompleteCountDenormalizer = {
   _updateList(listId) {
     // Recalculate the correct incomplete count direct from MongoDB

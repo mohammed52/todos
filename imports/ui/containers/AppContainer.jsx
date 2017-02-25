@@ -1,5 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 // XXX: Session
+
+// Session provides a global object on the client
+// that you can use to store an arbitrary set of key-value pairs
 import { Session } from 'meteor/session';
 import { createContainer } from 'meteor/react-meteor-data';
 
