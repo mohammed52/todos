@@ -64,6 +64,7 @@ export default class TodoItem extends BaseComponent {
     return (
       <div className={todoClass}>
         <label className="checkbox" htmlFor={this.props.todo._id}>
+          
           <input
             id={this.props.todo._id}
             type="checkbox"
@@ -74,7 +75,6 @@ export default class TodoItem extends BaseComponent {
           <span className="checkbox-custom" />
         </label>
         <input
-
           type="text"
           defaultValue={todo.text}
           placeholder={i18n.__('components.todoItem.taskName')}
@@ -82,6 +82,7 @@ export default class TodoItem extends BaseComponent {
           onBlur={this.onBlur}
           onChange={this.updateTodo}
         />
+        <div className="testbg-1 rank-number">Hello World-2</div>
         <a
           className="delete-item"
           href="#delete"

@@ -201,13 +201,22 @@ export default class ListHeader extends BaseComponent {
   render() {
     const { editing } = this.state;
     return (
-      <nav className="list-header">
+
+
+      <nav className="list-header form-todo testbg-3">
         {editing ? this.renderEditingHeader() : this.renderDefaultHeader()}
+        
         <form className="todo-new input-symbol" onSubmit={this.createTodo}>
           <input
             type="text"
             ref={(c) => { this.newTodoInput = c; }}
             placeholder={i18n.__('components.listHeader.typeToAdd')}
+          />
+          <input
+            type="text"
+            className="ranking-input-box testbg-2"
+            ref={(c) => { this.newTodoInputRank = c; }}
+            placeholder="add rack number"
           />
           <span className="icon-add" onClick={this.focusTodoInput} />
         </form>
