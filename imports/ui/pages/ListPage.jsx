@@ -47,7 +47,7 @@ export default class ListPage extends BaseComponent {
     }
 
     return (
-      <div className="page lists-show">
+      <div className="page lists-show list-area">
         <ListHeader list={list} />
         <div className="content-scrollable list-items list-box testbg-1">
           {loading

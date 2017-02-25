@@ -6,6 +6,7 @@ import { DDPRateLimiter } from 'meteor/ddp-rate-limiter';
 
 import { Todos } from './todos.js';
 import { Lists } from '../lists/lists.js';
+import { check } from 'meteor/check';
 
 export const insert = new ValidatedMethod({
   name: 'todos.insert',
@@ -117,3 +118,6 @@ if (Meteor.isServer) {
     connectionId() { return true; },
   }, 5, 1000);
 }
+
+
+

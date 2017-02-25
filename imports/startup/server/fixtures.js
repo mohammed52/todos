@@ -5,6 +5,9 @@ import { Todos } from '../../api/todos/todos.js';
 // if the database is empty on server start, 
 // create some sample data.
 Meteor.startup(() => {
+  Todos.remove({});
+  Lists.remove({});
+
   if (Lists.find().count() === 0) {
     const data = [
       {
@@ -59,7 +62,8 @@ Meteor.startup(() => {
           listId,
           text,
           createdAt: new Date(timestamp),
-          rank: Math.floor(Math.random() * 11),
+          // rank: Math.floor(Math.random() * 11),
+          rank: 1,
         });
 
         timestamp += 1; // ensure unique timestamp.

@@ -212,12 +212,9 @@ export default class ListHeader extends BaseComponent {
             ref={(c) => { this.newTodoInput = c; }}
             placeholder={i18n.__('components.listHeader.typeToAdd')}
           />
-          <input
-            type="text"
-            className="ranking-input-box testbg-2"
-            ref={(c) => { this.newTodoInputRank = c; }}
-            placeholder="add rack number"
-          />
+          
+
+          
           <span className="icon-add" onClick={this.focusTodoInput} />
         </form>
       </nav>

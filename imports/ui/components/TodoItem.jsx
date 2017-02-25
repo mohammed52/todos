@@ -82,7 +82,11 @@ export default class TodoItem extends BaseComponent {
           onBlur={this.onBlur}
           onChange={this.updateTodo}
         />
-        <div className="testbg-1 rank-number">Hello World-2</div>
+        <input
+          type="label"
+          defaultValue={todo.rank}
+          className="testbg-2 rank-number"
+        />
         <a
           className="delete-item"
           href="#delete"

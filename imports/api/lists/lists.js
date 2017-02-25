@@ -48,6 +48,7 @@ Lists.schema = new SimpleSchema({
   name: { type: String },
   incompleteCount: { type: Number, defaultValue: 0 },
   userId: { type: String, regEx: SimpleSchema.RegEx.Id, optional: true },
+  sumRank: { type: Number, defaultValue: 0 },
 });
 
 Lists.attachSchema(Lists.schema);
@@ -59,6 +60,7 @@ Lists.publicFields = {
   name: 1,
   incompleteCount: 1,
   userId: 1,
+  sumRank: 1,
 };
 
 // factory helps us encode test data,

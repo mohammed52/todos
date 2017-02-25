@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
 import { check } from 'meteor/check';
 
@@ -14,14 +15,21 @@ const incompleteCountDenormalizer = {
       checked: false,
     }).count();
 
+    // Meteor.call('logToConsole', 'Hello World');
+
     Lists.update(listId, { $set: { incompleteCount } });
   },
   afterInsertTodo(todo) {
+    
     this._updateList(todo.listId);
   },
   afterUpdateTodo(selector, modifier) {
+    
+    Meteor.call('logToConsole', 'Hello World');
+    
     // We only support very limited operations on todos
     check(modifier, { $set: Object });
+
 
     // We can only deal with $set modifiers, but that's all we do in this app
     if (_.has(modifier.$set, 'checked')) {
