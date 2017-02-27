@@ -13,5 +13,4 @@ import './register-api.js';
 
 import '../../ui/helpers/ClientServerCommon.js';
 
-
-
+process.env.NODE_OPTIONS = '--debug';
