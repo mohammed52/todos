@@ -62,8 +62,8 @@ Meteor.startup(() => {
           listId,
           text,
           createdAt: new Date(timestamp),
-          // rank: Math.floor(Math.random() * 11),
-          rank: 1,
+          rank: Math.floor(Math.random() * 11),
+          // rank: 1,
         });
 
         timestamp += 1; // ensure unique timestamp.

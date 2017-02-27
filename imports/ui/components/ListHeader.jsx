@@ -104,6 +104,7 @@ export default class ListHeader extends BaseComponent {
       insert.call({
         listId: this.props.list._id,
         text: input.value,
+        rank: 1
       }, displayError);
       input.value = '';
     }

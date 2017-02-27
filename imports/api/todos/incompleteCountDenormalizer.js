@@ -15,7 +15,15 @@ const incompleteCountDenormalizer = {
       checked: false,
     }).count();
 
-    // Meteor.call('logToConsole', 'Hello World');
+    const ranks = Todos.find().fetch();
+    let sumRanks = 0;
+    for (var i = ranks.length - 1; i >= 0; i--) {
+      sumRanks+= ranks[i].rank;
+    }
+
+    debugger
+    Meteor.call("logNumberToConsole", incompleteCount);
+    // Meteor.call("logObjectToConsole", ranks);
 
     Lists.update(listId, { $set: { incompleteCount } });
   },
@@ -24,8 +32,8 @@ const incompleteCountDenormalizer = {
     this._updateList(todo.listId);
   },
   afterUpdateTodo(selector, modifier) {
-    
-    Meteor.call('logToConsole', 'Hello World');
+    // debugger
+    // Meteor.call('logToConsole', 'Hello World');
     
     // We only support very limited operations on todos
     check(modifier, { $set: Object });
