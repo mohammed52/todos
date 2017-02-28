@@ -15,7 +15,12 @@ const incompleteCountDenormalizer = {
       checked: false,
     }).count();
 
-    const ranks = Todos.find().fetch();
+    const ranks = Todos.find({},{
+      listId: 0,
+      text: 0,
+      createdAt: 0,
+      checked: 0,
+      rank: 1,}).fetch();
     let sumRanks = 0;
     for (var i = ranks.length - 1; i >= 0; i--) {
       sumRanks+= ranks[i].rank;
