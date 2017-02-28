@@ -2,6 +2,11 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 
 Meteor.methods({
+  logStringToConsole(msg) {
+    check(msg, String);
+    // debugger;
+    console.log(msg);
+  },
   logNumberToConsole(msg) {
     check(msg, Number);
     // debugger;

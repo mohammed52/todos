@@ -15,22 +15,38 @@ const incompleteCountDenormalizer = {
       checked: false,
     }).count();
 
-    const ranks = Todos.find({},{
-      listId: 0,
-      text: 0,
-      createdAt: 0,
-      checked: 0,
-      rank: 1,}).fetch();
-    let sumRanks = 0;
+    const ranks = Todos.find({listId, checked: false},
+      {fields: { 
+        listId: 0,
+        text: 0,
+        createdAt: 0,
+        checked: 0
+      }}).fetch();
+    let sumRank = 0;
+    //get name of list
+
+    const listName = Lists.find({ _id: listId},{fields: { 
+        name: 1
+      }}).fetch();
+    
+    debugger
+    
+    Meteor.call("logStringToConsole", "List Name: "+listName[0].name);
+    Meteor.call("logStringToConsole", "Counting...");
+    
     for (var i = ranks.length - 1; i >= 0; i--) {
-      sumRanks+= ranks[i].rank;
+      sumRank+= ranks[i].rank;
+      Meteor.call("logStringToConsole", "rank[i]...");
+      Meteor.call("logNumberToConsole", ranks[i].rank);  
+      Meteor.call("logNumberToConsole", sumRank);  
+      Meteor.call("logStringToConsole", "------------------");
     }
 
-    debugger
-    Meteor.call("logNumberToConsole", incompleteCount);
+    
+    Meteor.call("logNumberToConsole", sumRank);
     // Meteor.call("logObjectToConsole", ranks);
 
-    Lists.update(listId, { $set: { incompleteCount } });
+    Lists.update(listId, { $set: { incompleteCount: incompleteCount, sumRank: sumRank} });
   },
   afterInsertTodo(todo) {
     

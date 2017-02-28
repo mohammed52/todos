@@ -82,6 +82,28 @@ export const updateText = new ValidatedMethod({
   },
 });
 
+export const updateRank = new ValidatedMethod({
+  name: 'todos.updateRank',
+  validate: new SimpleSchema({
+    todoId: { type: String },
+    newRank: { type: Number },
+  }).validator(),
+  run({ todoId, newRank }) {
+    // This is complex auth stuff - perhaps denormalizing a userId onto todos
+    // would be correct here?
+    const todo = Todos.findOne(todoId);
+
+    if (!todo.editableBy(this.userId)) {
+      throw new Meteor.Error('api.todos.updateText.accessDenied',
+        'Cannot edit todos in a private list that is not yours');
+    }
+
+    Todos.update(todoId, {
+      $set: { rank: newRank },
+    });
+  },
+});
+
 export const remove = new ValidatedMethod({
   name: 'todos.remove',
   validate: new SimpleSchema({

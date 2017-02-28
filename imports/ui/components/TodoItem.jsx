@@ -8,17 +8,28 @@ import { displayError } from '../helpers/errors.js';
 import {
   setCheckedStatus,
   updateText,
+  updateRank,
   remove,
 } from '../../api/todos/methods.js';
 
 export default class TodoItem extends BaseComponent {
   constructor(props) {
     super(props);
+    
     this.throttledUpdate = _.throttle((value) => {
       if (value) {
         updateText.call({
           todoId: this.props.todo._id,
           newText: value,
+        }, displayError);
+      }
+    }, 300);
+
+    this.throttledUpdateRank = _.throttle((value) => {
+      if (value) {
+        updateRank.call({
+          todoId: this.props.todo._id,
+          newRank: value,
         }, displayError);
       }
     }, 300);
@@ -47,6 +58,10 @@ export default class TodoItem extends BaseComponent {
 
   updateTodo(event) {
     this.throttledUpdate(event.target.value);
+  }
+
+  updateTodoRank(event) {
+    this.throttledUpdateRank(event.target.value);
   }
 
   deleteTodo() {
@@ -86,6 +101,7 @@ export default class TodoItem extends BaseComponent {
           type="label"
           defaultValue={todo.rank}
           className="testbg-2 rank-number"
+          onChange={this.updateTodoRank}
         />
         <a
           className="delete-item"
