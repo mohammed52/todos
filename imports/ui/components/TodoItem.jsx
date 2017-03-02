@@ -29,13 +29,14 @@ export default class TodoItem extends BaseComponent {
       if (value) {
         updateRank.call({
           todoId: this.props.todo._id,
-          newRank: value,
+          newRank: parseInt(value),
         }, displayError);
       }
     }, 300);
 
     this.setTodoCheckStatus = this.setTodoCheckStatus.bind(this);
     this.updateTodo = this.updateTodo.bind(this);
+    this.updateTodoRank = this.updateTodoRank.bind(this);
     this.deleteTodo = this.deleteTodo.bind(this);
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
@@ -98,9 +99,11 @@ export default class TodoItem extends BaseComponent {
           onChange={this.updateTodo}
         />
         <input
-          type="label"
+          type="text"
           defaultValue={todo.rank}
-          className="testbg-2 rank-number"
+          // className="testbg-3 rank-number"
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
           onChange={this.updateTodoRank}
         />
         <a

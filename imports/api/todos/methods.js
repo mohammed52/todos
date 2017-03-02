@@ -81,7 +81,7 @@ export const updateText = new ValidatedMethod({
     });
   },
 });
-
+// has arguments, name, mixins, validate, applyOption, run
 export const updateRank = new ValidatedMethod({
   name: 'todos.updateRank',
   validate: new SimpleSchema({
